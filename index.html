@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vector Draw</title>
+<meta name="description" content="Draw and edit vector artwork, cut files and drawings to scale. Open and save SVG, DXF, PDF and PNG. Everything stays on your computer.">
+<meta name="theme-color" content="#1b1d20">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+<script>
+  // problems are collected for the self-tests (a module that fails to load reports here)
+  window.__errors = [];
+  addEventListener('error', (e) => window.__errors.push(`${e.message} ${(e.filename || '').split('/').pop()}:${e.lineno}`));
+  addEventListener('unhandledrejection', (e) => window.__errors.push(String(e.reason && e.reason.stack || e.reason)));
+</script>
+<script src="vendor/clipper.js"></script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<header class="band">
+  <img class="mark" src="assets/badger-mark.png" alt="">
+  <span class="title">VECTOR DRAW</span>
+  <span class="company"><b>BADGER METAL &amp; MACHINE FABRICATION</b><small>Riverdale, New Jersey · Made in the USA</small></span>
+  <span class="spacer"></span>
+  <span class="update" id="update" hidden>A new version is ready. <button id="update-now">Restart now</button></span>
+  <span class="docname" id="docname"></span>
+</header>
+
+<nav class="menubar" id="menubar"></nav>
+
+<div class="optionsbar" id="optionsbar"></div>
+
+<main id="main">
+  <aside class="tools" id="tools"></aside>
+  <section class="work" id="work">
+    <canvas class="ruler top" id="ruler-top"></canvas>
+    <canvas class="ruler left" id="ruler-left"></canvas>
+    <div class="ruler corner" id="ruler-corner" title="Rulers show document units"></div>
+    <div class="stage-wrap" id="stage-wrap">
+      <svg id="stage" xmlns="http://www.w3.org/2000/svg">
+        <defs id="stage-defs"></defs>
+        <g id="view">
+          <rect id="board-shadow" fill="rgba(0,0,0,.45)"></rect>
+          <rect id="board" fill="#ffffff"></rect>
+          <g id="grid"></g>
+          <g id="content"></g>
+          <rect id="board-edge" fill="none" stroke="#5a5e65" vector-effect="non-scaling-stroke" pointer-events="none"></rect>
+        </g>
+        <g id="overlay"></g>
+      </svg>
+      <textarea id="text-editor" hidden spellcheck="false"></textarea>
+    </div>
+  </section>
+  <aside class="panels" id="panels"></aside>
+</main>
+
+<footer class="statusbar">
+  <span id="st-zoom" class="st"></span>
+  <span id="st-pos" class="st mono"></span>
+  <span id="st-size" class="st mono"></span>
+  <span id="st-msg" class="st msg"></span>
+  <span class="spacer"></span>
+  <span id="st-sel" class="st"></span>
+</footer>
+
+<div class="menu" id="dropdown" hidden></div>
+<div class="modal-back" id="modal" hidden><form class="modal" id="modal-form"></form></div>
+<div class="drop-hint" id="drop-hint" hidden></div>
+<input type="file" id="file-input" hidden>
+</body>
+</html>
