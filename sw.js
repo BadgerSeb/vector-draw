@@ -2,7 +2,7 @@
 // new VERSION and file list (tools\stamp.ps1); browsers see the changed file, download the new
 // version in the background, and the page switches to it (right away when nothing is open).
 
-const VERSION = '2026.10.26-1115';
+const VERSION = '2026.10.26-1200';
 const FILES = ['./', 'assets/badger-logo.png', 'assets/badger-mark.png', 'css/app.css', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'index.html', 'js/app.js', 'js/doc.js', 'js/dxf/font.js', 'js/dxf/model.js', 'js/dxf/scene.js', 'js/geom.js', 'js/icons.js', 'js/io/export.js', 'js/io/import.js', 'js/ops.js', 'js/panels.js', 'js/pathops.js', 'js/pathtools.js', 'js/render.js', 'js/state.js', 'js/tools.js', 'js/ui.js', 'js/view.js', 'manifest.webmanifest', 'vendor/clipper.js', 'vendor/LICENSES/clipper-lib.txt', 'vendor/LICENSES/pdf-lib.txt', 'vendor/pdf-lib.esm.min.js'];
 
 const CACHE = 'vector-draw-' + VERSION;
